@@ -602,7 +602,7 @@ def page_identification_rules(osoby):
     if addr_col:
         fo["_norm_name"] = fo["jmeno_prijmeni"].apply(normalize_name)
         fo["_key1"] = fo["_norm_name"] + "|" + fo[addr_col].fillna("")
-
+        fo["_key3"] = fo["_norm_name"] + "|" + fo["ico"].fillna("")
         missing = fo[fo[bday_col] == ""]
         has = fo[fo[bday_col] != ""]
 
@@ -614,7 +614,6 @@ def page_identification_rules(osoby):
 
         # Rule 3: name + company
         still_missing = missing[~missing["_key1"].isin(keys_with_bday)]
-        fo["_key3"] = fo["_norm_name"] + "|" + fo["ico"].fillna("")
         keys_with_bday_3 = set(has["_key3"].unique())
         resolvable_r3 = still_missing[still_missing["_key3"].isin(keys_with_bday_3)]
 
