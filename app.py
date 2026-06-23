@@ -477,7 +477,7 @@ def page_connections(osoby, subj):
         fo["_pkey"] = fo["jmeno_prijmeni"].apply(normalize_name)
 
     # Let user pick a company by ICO
-    target_ico = st.text_input("IČO firmy", placeholder="napr. 12345678")
+    target_ico = st.text_input("IČO firmy", placeholder="napr. 60827441")
 
     if not target_ico:
         st.info("Zadaj IČO firmy pre zobrazenie prepojení.")
